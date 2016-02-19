@@ -1,48 +1,39 @@
 <!DOCTYPE html>
 
 <html>
+<head>
+	<style> 
+	   th {
+		   text-align: left;
+	   }
+	</style>
+</head>
 <body>
-	<h1>Recent Media Releases</h1>
-	<p id="afterURL"></p>
-	<p id="beforeIf"></p>
-	<p id="insideIf"></p>
-	<p id="inJason"></p>
-	<p id="afterOpen"></p>
-	<p id="afterSend"></p>
-	<p id="inMyFunction1"></p>
-	<p id="inMyFunction2"></p>
+	<h1>Users</h1>
 	<div id="mediaReleases"></div>
 
 <script>
 var xmlhttp = new XMLHttpRequest();
 var url = "http://jsonplaceholder.typicode.com/users";
 
-document.getElementById("afterURL").innerHTML = "after URL";
-
 xmlhttp.onreadystatechange = function() {
-	document.getElementById("beforeIf").innerHTML = "before if";
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-		document.getElementById("insideIf").innerHTML = "inside if";
         var myArr = JSON.parse(xmlhttp.responseText);
         myFunction(myArr);
-	document.getElementById("inJason").innerHTML = "in Jason";
     }
 };
 xmlhttp.open("GET", url, true);
-document.getElementById("afterOpen").innerHTML = "after XML open";
 xmlhttp.send();
-document.getElementById("afterSend").innerHTML = "after XML send";
 
 function myFunction(arr) {
-	document.getElementById("inMyFunction1").innerHTML = "in my function";
-    var out = "";
+    var out = "<table border=1><tr><th>Name</th><th>User Name</th><th>Email</th></tr>";
     var i;
     for(i = 0; i < arr.length; i++) {
-        out += '<p>' + arr[i].name + 
-        arr[i].username + arr[i].email'</p><br>';
-		document.getElementById("inMyFunction2").innerHTML = "in my function2";
+        out += "<tr><td>" + arr[i].name + "</td><td>" +
+        arr[i].username + "</td><td>" + arr[i].email + "</td></tr>";
     }
-    document.getElementById("mediaReleases").innerHTML = out;
+	out += "</table>";
+	document.getElementById("mediaReleases").innerHTML = out;
 }
 </script>
 
