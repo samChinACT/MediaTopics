@@ -15,10 +15,10 @@
 
 <script>
 var xmlhttp = new XMLHttpRequest();
-var url = "http://media.australia.gov.au/api/topics";
-	
+var url = "http://jsonplaceholder.typicode.com/users";
+
 document.getElementById("afterURL").innerHTML = "after URL";
-	
+
 xmlhttp.onreadystatechange = function() {
 	document.getElementById("beforeIf").innerHTML = "before if";
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -38,7 +38,7 @@ function myFunction(arr) {
     var out = "";
     var i;
     for(i = 0; i < arr.length; i++) {
-        out += '<a href="' + arr[i].name + '">' + 
+        out += '<a href="' + arr[i].name + '">' +
         arr[i].description + '</a><br>';
 		document.getElementById("inMyFunction2").innerHTML = "in my function2";
     }
